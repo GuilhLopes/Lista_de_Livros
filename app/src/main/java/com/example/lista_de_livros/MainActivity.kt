@@ -6,14 +6,12 @@ import UserRequest
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.textfield.TextInputEditText
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import android.widget.Toast
-import com.example.lista_de_livros.api.RetrofitClient
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,6 +37,7 @@ class MainActivity : AppCompatActivity() {
                         val tolkenResponse = response.body()
                         tolkenResponse?.let {
                             Toast.makeText(this@MainActivity, "Tolken criado: ${it.token}", Toast.LENGTH_LONG).show()
+
                             val intent = Intent(this@MainActivity, CadastroActivity::class.java)
                             intent.putExtra("token", it.token)  // Passando uma string
                             startActivity(intent)
